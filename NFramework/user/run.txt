@@ -1,0 +1,2 @@
+java -classpath ..\build\libs\nframework-user.jar;..\..\client\build\libs\nframework-client.jar;..\..\common\build\libs\nframework-common.jar;..\..\server\build\libs\nframework-server.jar;D:\Software\GSON-2.10.1\gson-2.10.1.jar;. com.chayan.mulewa.chess.main.ChessServer
+java -classpath ..\build\libs\nframework-user.jar;..\..\client\build\libs\nframework-client.jar;..\..\common\build\libs\nframework-common.jar;..\..\server\build\libs\nframework-server.jar;D:\Software\GSON-2.10.1\gson-2.10.1.jar;. com.chayan.mulewa.chess.main.ChessClient

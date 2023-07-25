@@ -1,0 +1,9 @@
+apply plugin:'java'
+dependencies
+{
+    implementation files('D:\\Software\\GSON-2.10.1\\gson-2.10.1.jar','..\\common\\build\\libs\\nframework-common.jar','..\\server\\build\\libs\\nframework-server.jar','..\\client\\build\\libs\\nframework-client.jar')
+}
+jar
+{
+    archiveBaseName='nframework-user'
+}
