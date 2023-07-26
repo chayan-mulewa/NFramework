@@ -8,13 +8,14 @@ import com.chayan.mulewa.nframework.server.*;
 @Path("/chess")
 public class ChessForServer extends JFrame
 {
+    private static ChessForServer instance;
     NFrameworkServer server;
     JButton[][] squares;
     int selectedRow = -1;
     int selectedCol = -1;
     boolean isWhiteTurn = true;
 
-    public ChessForServer() 
+    private ChessForServer() 
     {
         squares = new JButton[8][8];
         setName("Chess Server");
@@ -26,6 +27,14 @@ public class ChessForServer extends JFrame
         setUpChessBoard();
     }
 
+    public static ChessForServer getInstance()
+    {
+        if (instance == null)
+        {
+            instance = new ChessForServer();
+        }
+        return instance;
+    }
     private void setUpChessBoard()
     {
         for(int row=0;row<8;row++)

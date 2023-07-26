@@ -4,6 +4,7 @@ import java.lang.reflect.*;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
 import com.google.gson.Gson;
+import com.chayan.mulewa.chess.ui.ChessForServer;
 import com.chayan.mulewa.nframework.common.*;
 public class RequestProcessor extends Thread
 {
@@ -99,20 +100,22 @@ public class RequestProcessor extends Thread
                 Method method=tcpService.method;
                 try 
                 {
-                    Constructor constructor = c.getDeclaredConstructor();
-                    Object serviceObject = constructor.newInstance();
-                    Object result = method.invoke(serviceObject,sourceRow,sourceCol,targetRow,targetCol);
-                    
+                    // Constructor constructor = c.getDeclaredConstructor();
+                    // Object serviceObject = constructor.newInstance();
+                    // Object result = method.invoke(serviceObject,sourceRow,sourceCol,targetRow,targetCol);
+                    ChessForServer chessServer = ChessForServer.getInstance();
+                    Object result = method.invoke(chessServer, sourceRow, sourceCol, targetRow, targetCol);
                     responseObject.setSuccess(true);
                     responseObject.setResult(result);
                     responseObject.setException(null);
-                }catch (InstantiationException instantiationException)
-                {
-                    responseObject.setSuccess(false);
-                    responseObject.setResult(null);
-                    responseObject.setException(new RuntimeException("Unable To Create Object To Service Class Associated With Path : "+servicePath));
-                    System.out.println("catch 1");
                 }
+                // catch (InstantiationException instantiationException)
+                // {
+                //     responseObject.setSuccess(false);
+                //     responseObject.setResult(null);
+                //     responseObject.setException(new RuntimeException("Unable To Create Object To Service Class Associated With Path : "+servicePath));
+                //     System.out.println("catch 1");
+                // }
                 catch (IllegalAccessException illegalAccessException)
                 {
                     System.out.println(illegalAccessException.getMessage());
